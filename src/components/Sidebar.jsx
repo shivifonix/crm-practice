@@ -38,7 +38,7 @@ export default function Sidebar() {
        
         <div className="flex items-center px-6 py-4 border-b">
           <NavLink
-            to="/"
+            to="/dashboard"
             className={({ isActive }) =>
               `flex items-center px-3 py-2 rounded ${
                 isActive ? "text-gray-900" : "text-gray-700"
@@ -104,23 +104,21 @@ export default function Sidebar() {
         {/* Footer Section */}
         <div className="border-t px-4 py-4">
           <ul className="space-y-1">
+           
             <li>
-              <a href="#" className="flex items-center px-3 py-2 rounded hover:bg-gray-100">
-                <HiOutlineCog className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Settings</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="flex items-center px-3 py-2 rounded hover:bg-gray-100">
-                <HiOutlineLogout className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Sign Up</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="flex items-center px-3 py-2 rounded hover:bg-gray-100">
+               <NavLink
+                to="/profile"
+                className={({ isActive }) =>
+                  `flex items-center px-3 py-2 rounded ${
+                    isActive
+                      ? "bg-gray-200 text-gray-900"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`
+                }
+              >
                 <HiUserCircle className="h-5 w-5 text-gray-500" />
                 <span className="ml-3">Profile</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

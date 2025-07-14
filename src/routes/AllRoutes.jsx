@@ -9,11 +9,12 @@ import Products from '../pages/Products';
 import AddProducts from '../pages/AddProducts';
 import EditProducts from '../pages/EditProducts';
 import Dashboard from '../pages/Dashboard';
+import Profile from '../pages/Profile';
 
 export function AllRoutes(){
     return(
 <Routes>
-        <Route path='/' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard />} />
     <Route path='/blogs' element={<Blogs />}/>
      <Route path='/users' element={<Users />}/>
       <Route path='/addusers' element={<AddUsers />}/>
@@ -21,6 +22,8 @@ export function AllRoutes(){
         <Route path='/products' element={<Products />}/>
          <Route path='/addproducts' element={<AddProducts />}/>
           <Route path='/editproducts/:id' element={<EditProducts />}/>
+          <Route path='/profile' element={<Profile/>}/>
+      
 </Routes>
 );
 }

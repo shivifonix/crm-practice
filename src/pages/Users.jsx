@@ -1,9 +1,12 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "../components/Modal";
+import { MdDelete } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 export function Users() {
   const navigate = useNavigate();
@@ -11,6 +14,8 @@ export function Users() {
   const [loading, setLoading] = useState(false);
   const [open,setOpen]=useState(false)
 const [selectedUserId, setSelectedUserId] = useState(null);
+const {id}=useParams();
+
   const userdata = async () => {
     setLoading(true);
 
@@ -23,8 +28,9 @@ const [selectedUserId, setSelectedUserId] = useState(null);
       console.log(response.data)
     } catch (err) {
       console.log(err);
-    } finally {
+    } finally{
       setLoading(false);
+       setOpen(false);
     }
   };
 
@@ -45,6 +51,7 @@ const [selectedUserId, setSelectedUserId] = useState(null);
         `https://jsonplaceholder.typicode.com/users/${id}`
       );
       toast.success("User Deleted Successfully");
+      setOpen(false);
     } catch (err) {
       toast.error("Failed to delete users . Please try again");
       console.log("data not deleted");
@@ -124,7 +131,9 @@ const [selectedUserId, setSelectedUserId] = useState(null);
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDelete(user.id)}
+                        onClick={() =>{ setSelectedUserId(user.id);
+                        setOpen(true)
+                        }}
                         className="flex px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 w-16"
                       >
                         Delete
@@ -145,7 +154,7 @@ const [selectedUserId, setSelectedUserId] = useState(null);
           </div>
           <div className="flex gap-4 justify-center items-center w-full">
             <button 
-            onClick={() => handleDelete(selectedProductId)}
+            onClick={() => handleDelete(selectedUserId)}
             className=" w-24 h-8 flex  items-center justify-center bg-red-500 text-white  " >
               Delete
             </button>

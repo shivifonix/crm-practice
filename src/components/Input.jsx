@@ -1,7 +1,7 @@
 
 import React from "react";
 const Input=({
-    type,placeholder,value,onChange,errorMessage,icon,name,id,className
+    type,placeholder,value,onChange,icon,name,id,className
 })=>{
     return(
         <>
@@ -10,7 +10,7 @@ const Input=({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        errorMessage={errorMessage}
+       
         icon={icon}
         name={name}
         id={id}
